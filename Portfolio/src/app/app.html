@@ -1,321 +1,159 @@
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * Delete the template below * * * * * * * * * -->
-<!-- * * * * * * * to get started with your project! * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+﻿<main class="portfolio">
+  <div class="loader-overlay" *ngIf="!loaded()">
+    <div class="loader-ring"></div>
+    <p>Preparing your portfolio...</p>
+  </div>
 
-<style>
-  :host {
-    --bright-blue: oklch(51.01% 0.274 263.83);
-    --electric-violet: oklch(53.18% 0.28 296.97);
-    --french-violet: oklch(47.66% 0.246 305.88);
-    --vivid-pink: oklch(69.02% 0.277 332.77);
-    --hot-red: oklch(61.42% 0.238 15.34);
-    --orange-red: oklch(63.32% 0.24 31.68);
-
-    --gray-900: oklch(19.37% 0.006 300.98);
-    --gray-700: oklch(36.98% 0.014 302.71);
-    --gray-400: oklch(70.9% 0.015 304.04);
-
-    --red-to-pink-to-purple-vertical-gradient: linear-gradient(
-      180deg,
-      var(--orange-red) 0%,
-      var(--vivid-pink) 50%,
-      var(--electric-violet) 100%
-    );
-
-    --red-to-pink-to-purple-horizontal-gradient: linear-gradient(
-      90deg,
-      var(--orange-red) 0%,
-      var(--vivid-pink) 50%,
-      var(--electric-violet) 100%
-    );
-
-    --pill-accent: var(--bright-blue);
-
-    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-      Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-      "Segoe UI Symbol";
-    box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    display: block;
-    height: 100dvh;
-  }
-
-  h1 {
-    font-size: 3.125rem;
-    color: var(--gray-900);
-    font-weight: 500;
-    line-height: 100%;
-    letter-spacing: -0.125rem;
-    margin: 0;
-    font-family: "Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-      Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-      "Segoe UI Symbol";
-  }
-
-  p {
-    margin: 0;
-    color: var(--gray-700);
-  }
-
-  main {
-    width: 100%;
-    min-height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem;
-    box-sizing: inherit;
-    position: relative;
-  }
-
-  .angular-logo {
-    max-width: 9.2rem;
-  }
-
-  .content {
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-    max-width: 700px;
-    margin-bottom: 3rem;
-  }
-
-  .content h1 {
-    margin-top: 1.75rem;
-  }
-
-  .content p {
-    margin-top: 1.5rem;
-  }
-
-  .divider {
-    width: 1px;
-    background: var(--red-to-pink-to-purple-vertical-gradient);
-    margin-inline: 0.5rem;
-  }
-
-  .pill-group {
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    flex-wrap: wrap;
-    gap: 1.25rem;
-  }
-
-  .pill {
-    display: flex;
-    align-items: center;
-    --pill-accent: var(--bright-blue);
-    background: color-mix(in srgb, var(--pill-accent) 5%, transparent);
-    color: var(--pill-accent);
-    padding-inline: 0.75rem;
-    padding-block: 0.375rem;
-    border-radius: 2.75rem;
-    border: 0;
-    transition: background 0.3s ease;
-    font-family: var(--inter-font);
-    font-size: 0.875rem;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 1.4rem;
-    letter-spacing: -0.00875rem;
-    text-decoration: none;
-    white-space: nowrap;
-  }
-
-  .pill:hover {
-    background: color-mix(in srgb, var(--pill-accent) 15%, transparent);
-  }
-
-  .pill-group .pill:nth-child(6n + 1) {
-    --pill-accent: var(--bright-blue);
-  }
-  .pill-group .pill:nth-child(6n + 2) {
-    --pill-accent: var(--electric-violet);
-  }
-  .pill-group .pill:nth-child(6n + 3) {
-    --pill-accent: var(--french-violet);
-  }
-
-  .pill-group .pill:nth-child(6n + 4),
-  .pill-group .pill:nth-child(6n + 5),
-  .pill-group .pill:nth-child(6n + 6) {
-    --pill-accent: var(--hot-red);
-  }
-
-  .pill-group svg {
-    margin-inline-start: 0.25rem;
-  }
-
-  .social-links {
-    display: flex;
-    align-items: center;
-    gap: 0.73rem;
-    margin-top: 1.5rem;
-  }
-
-  .social-links path {
-    transition: fill 0.3s ease;
-    fill: var(--gray-400);
-  }
-
-  .social-links a:hover svg path {
-    fill: var(--gray-900);
-  }
-
-  @media screen and (max-width: 650px) {
-    .content {
-      flex-direction: column;
-      width: max-content;
-    }
-
-    .divider {
-      height: 1px;
-      width: 100%;
-      background: var(--red-to-pink-to-purple-horizontal-gradient);
-      margin-block: 1.5rem;
-    }
-  }
-</style>
-
-<main class="portfolio">
-  <div class="container grid">
+  <div class="page-shell" *ngIf="loaded()">
     <nav class="topnav">
-      <div class="nav-inner">
-        <div class="brand">Sushil Kumar</div>
-        <ul class="nav-links">
-          <li><a href="#about">About</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#education">Education</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </div>
-    </nav>
-    <aside class="card profile">
-      <div class="profile-top">
-        <div class="avatar" aria-hidden="true">SK</div>
-        <div class="profile-info">
-          <h1>Sushil Kumar</h1>
-          <p class="role">Full Stack Developer</p>
-          <p class="experience">7+ yrs IT · 3+ yrs .NET / MERN</p>
-        </div>
-      </div>
-
-      <p class="lead">Skilled in Microservices, APIs, React, SQL, Python/Django, AI/ML, Cloud (AWS/GCP/Azure), CI/CD, CQRS. Expertise in scalable apps, SEO/SMO, Data Science.</p>
-
-      <div class="actions">
-        <a class="btn primary" href="/assets/Resume.pdf" target="_blank" rel="noopener">Download Resume</a>
-        <a class="btn ghost" href="/assets/Sushil%20Kumar.pdf" target="_blank" rel="noopener">Detailed CV</a>
-      </div>
-
-      <ul class="contact">
-        <li><strong>Location:</strong> Bangalore, Karnataka</li>
-        <li><strong>Email:</strong> <a href="mailto:sushil8916@gmail.com">sushil8916@gmail.com</a></li>
-        <li><strong>Phone:</strong> <a href="tel:+919386408916">+91-9386408916</a></li>
+      <div class="nav-brand">Sushil Kumar</div>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
-    </aside>
+    </nav>
 
-    <section class="content">
-      <section id="about" class="card">
-        <h2>About</h2>
-        <p>I am a Full Stack Developer with 7+ years in IT and 3+ years focused on .NET and MERN stacks. My expertise includes designing and building microservices, APIs, scalable web applications and data-driven solutions. I work with React, SQL, Python/Django, and have experience with AI/ML, and cloud platforms (AWS, GCP, Azure). I follow CI/CD practices and design patterns like CQRS for scalable systems.</p>
-      </section>
-      <div id="experience" class="card">
-        <h2>Work Experience</h2>
+    <section class="hero card hero-card">
+      <div class="hero-copy">
+        <span class="eyebrow">Full Stack Developer</span>
+        <h1>Sushil Kumar</h1>
+        <p class="hero-title">Building scalable applications with .NET, MERN, AI/ML and Cloud platforms.</p>
+        <p class="hero-text">I create enterprise solutions that combine ERP, HRMS, analytics and intelligent automation with responsive user experiences.</p>
 
-        <article class="job">
-          <h3>Jr. Executive — Shriram Institute for Industrial Research</h3>
-          <p class="meta">Bangalore · Oct 2022 — Mar 2024</p>
-          <ul>
-            <li>Maintain the database of ERP, HRMS System.</li>
-            <li>Maintain the ERP, HRMS.</li>
-          </ul>
-        </article>
+        <div class="hero-actions">
+          <a class="btn primary" href="/assets/Resume.pdf" target="_blank" rel="noopener">Download Resume</a>
+          <a class="btn secondary" href="/assets/Sushil%20Kumar.pdf" target="_blank" rel="noopener">View CV</a>
+        </div>
 
-        <article class="job">
-          <h3>Software Developer (FullStack) — Smartdust Technologies</h3>
-          <p class="meta">Patna · Nov 2021 — Oct 2022</p>
-          <p>Project: C#, ASP.NET Core, MVC, Bootstrap 5, JavaScript.</p>
-          <ul>
-            <li>Booking System and Survey page.</li>
-            <li>Upload results to Google Drive and retrieve them.</li>
-            <li>Report submission UI with tabs; dashboard design.</li>
-          </ul>
-        </article>
-
-        <article class="job">
-          <h3>Lab Assistant — R. P. Sharma Institute of Technology</h3>
-          <p class="meta">Patna · Aug 2019 — Oct 2021</p>
-          <ul><li>Conducted lab sessions for MBA and B-Tech students.</li></ul>
-        </article>
-
-        <article class="job">
-          <h3>Database Admin — Sobha Softech Private Limited</h3>
-          <p class="meta">Ranchi · Nov 2014 — Oct 2017</p>
-          <ul><li>Created and maintained databases, scripts, and grants.</li></ul>
-        </article>
-      </div>
-
-      <div class="card skills-card">
-        <h2>Skills</h2>
-        <div class="skills">
-          <span>Microservices</span>
-          <span>APIs</span>
-          <span>React</span>
-          <span>SQL</span>
-          <span>Python / Django</span>
-          <span>AI / ML</span>
-          <span>AWS / GCP / Azure</span>
-          <span>CI/CD</span>
-          <span>CQRS</span>
-          <span>SEO / SMO</span>
-          <span>Data Science</span>
+        <div class="hero-stats">
+          <div><strong>7+</strong><span>Years in IT</span></div>
+          <div><strong>3+</strong><span>.NET / MERN</span></div>
+          <div><strong>4</strong><span>Cloud Platforms</span></div>
         </div>
       </div>
 
-      <div id="education" class="card">
-        <h2>Education</h2>
-        <ul class="education-list">
-          <li><strong>MCA</strong>, University Dept. of Mathematics, Ranchi University, Ranchi — <strong>68.84%</strong> · 2014</li>
-          <li><strong>B.Sc</strong>, Gossner College (Ranchi University), Ranchi — <strong>78.25%</strong> · 2011</li>
-          <li><strong>10+2</strong>, DAV Public School, Bariatu, Ranchi (NIOS) — <strong>52.0%</strong> · 2007</li>
-          <li><strong>10</strong>, DAV Public School, BSEB Colony, Patna (CBSE) — <strong>71.2%</strong> · 2003</li>
-        </ul>
-        <p>See full resumes: <a href="/assets/Resume.pdf" target="_blank">Resume.pdf</a> · <a href="/assets/Sushil%20Kumar.pdf" target="_blank">Sushil Kumar.pdf</a></p>
+      <div class="hero-visual">
+        <div class="profile-frame">
+          <img src="/assets/profile.jpg" alt="Sushil Kumar" />
+        </div>
       </div>
-
-      <section id="contact" class="card">
-        <h2>Contact</h2>
-        <p>Contact details:</p>
-        <ul>
-          <li><strong>Email:</strong> <a href="mailto:sushil8916@gmail.com">sushil8916@gmail.com</a></li>
-          <li><strong>Phone:</strong> <a href="tel:+919386408916">+91-9386408916</a></li>
-          <li><strong>Primary Location:</strong> Bangalore, Karnataka</li>
-          <li><strong>Secondary Location:</strong> Patna, Bihar</li>
-        </ul>
-      </section>
-
-      <footer class="footer">
-        <div>© Sushil Kumar</div>
-        <div class="links"><a href="#">GitHub</a> · <a href="#">LinkedIn</a></div>
-      </footer>
     </section>
+
+    <section class="grid main-grid">
+      <aside class="card profile-card">
+        <h2>Profile</h2>
+        <p class="profile-text">Experienced developer with a strong track record in ERP, HRMS, reporting systems, and cloud deployments. I combine backend development, AI/ML insights, and modern frontend design to deliver business-ready applications.</p>
+
+        <div class="badges">
+          <span class="badge">AI / ML</span>
+          <span class="badge">Cloud</span>
+          <span class="badge">Microservices</span>
+          <span class="badge">React</span>
+          <span class="badge">ASP.NET Core</span>
+        </div>
+
+        <div class="contact-card">
+          <h3>Contact</h3>
+          <p><strong>Email:</strong> <a href="mailto:sushil8916@gmail.com">sushil8916@gmail.com</a></p>
+          <p><strong>Phone:</strong> <a href="tel:+919386408916">+91-9386408916</a></p>
+          <p><strong>Location:</strong> Bangalore, Karnataka / Patna, Bihar</p>
+        </div>
+      </aside>
+
+      <main class="card details-card">
+        <section id="about" class="section-block">
+          <h2>About</h2>
+          <p>I build reliable applications for business-critical workflows using modern web tech, cloud services, and AI-driven automation. My projects focus on backend stability, front-end usability, and data intelligence.</p>
+        </section>
+
+        <section class="section-block feature-section">
+          <h2>Key Expertise</h2>
+          <div class="feature-grid">
+            <article class="feature-card">
+              <h3>Enterprise Applications</h3>
+              <p>Developing responsive solutions with ASP.NET Core, MVC, React, and Bootstrap 5.</p>
+            </article>
+            <article class="feature-card">
+              <h3>AI / Data</h3>
+              <p>Delivering NLP, ML, computer vision, and generative intelligence backed by Power BI insights.</p>
+            </article>
+            <article class="feature-card">
+              <h3>Cloud Engineering</h3>
+              <p>Deploying scalable systems on AWS, GCP, Azure with CI/CD and efficient monitoring.</p>
+            </article>
+            <article class="feature-card">
+              <h3>Database Performance</h3>
+              <p>Optimizing MySQL and SQL Server for robust reporting, automation, and data accuracy.</p>
+            </article>
+          </div>
+        </section>
+
+        <section id="experience" class="section-block">
+          <h2>Work Experience</h2>
+
+          <article class="job">
+            <h3>Jr. Executive — Shriram Institute for Industrial Research</h3>
+            <p class="meta">Bangalore · Oct 2022 — Mar 2024</p>
+            <ul>
+              <li>Maintain the database of ERP, HRMS System.</li>
+              <li>Maintain the ERP, HRMS.</li>
+            </ul>
+          </article>
+
+          <article class="job">
+            <h3>Software Developer (FullStack) — Smartdust Technologies</h3>
+            <p class="meta">Patna · Nov 2021 — Oct 2022</p>
+            <p>Project: C#, ASP.NET Core, MVC, Bootstrap 5, JavaScript.</p>
+            <ul>
+              <li>Booking System and Survey page.</li>
+              <li>Upload results to Google Drive and retrieve them.</li>
+              <li>Report submission UI with tabs; dashboard design.</li>
+            </ul>
+          </article>
+
+          <article class="job">
+            <h3>Lab Assistant — R. P. Sharma Institute of Technology</h3>
+            <p class="meta">Patna · Aug 2019 — Oct 2021</p>
+            <ul><li>Conducted lab sessions for MBA and B-Tech students.</li></ul>
+          </article>
+
+          <article class="job">
+            <h3>Database Admin — Sobha Softech Private Limited</h3>
+            <p class="meta">Ranchi · Nov 2014 — Oct 2017</p>
+            <ul><li>Created and maintained databases, scripts, and grants.</li></ul>
+          </article>
+        </section>
+
+        <section id="education" class="section-block">
+          <h2>Education</h2>
+          <ul class="education-list">
+            <li><strong>MCA</strong>, University Dept. of Mathematics, Ranchi University, Ranchi — <strong>68.84%</strong> · 2014</li>
+            <li><strong>B.Sc</strong>, Gossner College (Ranchi University), Ranchi — <strong>78.25%</strong> · 2011</li>
+            <li><strong>10+2</strong>, DAV Public School, Bariatu, Ranchi (NIOS) — <strong>52.0%</strong> · 2007</li>
+            <li><strong>10</strong>, DAV Public School, BSEB Colony, Patna (CBSE) — <strong>71.2%</strong> · 2003</li>
+          </ul>
+          <p>See full resumes: <a href="/assets/Resume.pdf" target="_blank">Resume.pdf</a> · <a href="/assets/Sushil%20Kumar.pdf" target="_blank">Sushil Kumar.pdf</a></p>
+        </section>
+
+        <section id="contact" class="section-block">
+          <h2>Contact</h2>
+          <ul class="contact-list">
+            <li><strong>Email:</strong> <a href="mailto:sushil8916@gmail.com">sushil8916@gmail.com</a></li>
+            <li><strong>Phone:</strong> <a href="tel:+919386408916">+91-9386408916</a></li>
+            <li><strong>Location:</strong> Bangalore, Karnataka / Patna, Bihar</li>
+          </ul>
+          <p class="contact-note">Ready to collaborate on modern web, cloud and AI solutions.</p>
+        </section>
+      </main>
+    </section>
+
+    <footer class="footer">
+      <p>© 2026 Sushil Kumar</p>
+      <p><a href="#">GitHub</a> · <a href="#">LinkedIn</a></p>
+    </footer>
   </div>
 </main>
-
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content above * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * End of Placeholder  * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-
 
 <router-outlet />
