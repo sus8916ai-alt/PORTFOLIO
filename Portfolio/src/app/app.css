@@ -13,6 +13,17 @@
 /* Layout grid */
 .grid { display:grid; grid-template-columns: 320px 1fr; gap: 2rem; align-items:start }
 
+/* Top navigation */
+.topnav { grid-column: 1 / -1; margin-bottom: .5rem }
+.nav-inner { display:flex; justify-content:space-between; align-items:center }
+.brand { font-weight:700 }
+.nav-links { list-style:none; display:flex; gap:1rem; margin:0 }
+.nav-links a { text-decoration:none; color:#334155; padding:.4rem .6rem; border-radius:6px }
+.nav-links a:hover { background:#f1f5f9 }
+.topnav { padding-bottom:.5rem }
+
+html { scroll-behavior: smooth }
+
 /* Profile card */
 .card { background: #fff; border-radius: 10px; box-shadow: 0 6px 18px rgba(16,24,40,0.06); padding: 1.25rem }
 .profile { padding: 1.5rem }
@@ -49,5 +60,8 @@
 	.grid{ grid-template-columns: 1fr; }
 	.profile { order: -1 }
 }
+
+.education-list { margin: .5rem 0 0 0; padding-left: 1.1rem }
+.education-list li { margin: .45rem 0 }
 
 
