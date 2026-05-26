@@ -186,6 +186,17 @@
 
 <main class="portfolio">
   <div class="container grid">
+    <nav class="topnav">
+      <div class="nav-inner">
+        <div class="brand">Sushil Kumar</div>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
     <aside class="card profile">
       <div class="profile-top">
         <div class="avatar" aria-hidden="true">SK</div>
@@ -205,12 +216,17 @@
 
       <ul class="contact">
         <li><strong>Location:</strong> Bangalore, Karnataka</li>
-        <li><strong>Email:</strong> (add your email)</li>
+        <li><strong>Email:</strong> <a href="mailto:sushil8916@gmail.com">sushil8916@gmail.com</a></li>
+        <li><strong>Phone:</strong> <a href="tel:+919386408916">+91-9386408916</a></li>
       </ul>
     </aside>
 
     <section class="content">
-      <div class="card">
+      <section id="about" class="card">
+        <h2>About</h2>
+        <p>I am a Full Stack Developer with 7+ years in IT and 3+ years focused on .NET and MERN stacks. My expertise includes designing and building microservices, APIs, scalable web applications and data-driven solutions. I work with React, SQL, Python/Django, and have experience with AI/ML, and cloud platforms (AWS, GCP, Azure). I follow CI/CD practices and design patterns like CQRS for scalable systems.</p>
+      </section>
+      <div id="experience" class="card">
         <h2>Work Experience</h2>
 
         <article class="job">
@@ -262,6 +278,26 @@
           <span>Data Science</span>
         </div>
       </div>
+
+      <div id="education" class="card">
+        <h2>Education</h2>
+        <p><strong>Education details</strong> — full academic details are available in the attached CVs below. Key highlights:</p>
+        <ul>
+          <li>Bachelor / Diploma: (see CV for institution, year, and details)</li>
+        </ul>
+        <p>See full resumes: <a href="/assets/Resume.pdf" target="_blank">Resume.pdf</a> · <a href="/assets/Sushil%20Kumar.pdf" target="_blank">Sushil Kumar.pdf</a></p>
+      </div>
+
+      <section id="contact" class="card">
+        <h2>Contact</h2>
+        <p>Contact details:</p>
+        <ul>
+          <li><strong>Email:</strong> <a href="mailto:sushil8916@gmail.com">sushil8916@gmail.com</a></li>
+          <li><strong>Phone:</strong> <a href="tel:+919386408916">+91-9386408916</a></li>
+          <li><strong>Primary Location:</strong> Bangalore, Karnataka</li>
+          <li><strong>Secondary Location:</strong> Patna, Bihar</li>
+        </ul>
+      </section>
 
       <footer class="footer">
         <div>© Sushil Kumar</div>
